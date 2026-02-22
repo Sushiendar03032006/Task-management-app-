@@ -108,32 +108,31 @@ Open:  index.html
 
 ---
 
-## 📊 Dashboard Overview:
- 
--Task Progress Graph
--Completion Percentage
--Pending Task Counter
--Real-time Updates
+## 📊 Dashboard Overview
+
+- Task Progress Graph  
+- Completion Percentage  
+- Pending Task Counter  
+- Real-time Updates  
 
 ---
 
-## 🔒 Security:
+## 🔒 Security
 
-
--Secure Firebase Authentication
--User-specific Firestore data
--Protected routes
--Session management
+- Secure Firebase Authentication  
+- User-specific Firestore data  
+- Protected routes  
+- Session management  
 
 ---
 
-## 🌟 Future Enhancements:
+## 🌟 Future Enhancements
 
--📅 Calendar Integration
--🔔 Notifications
--🤖 AI Task Suggestions
--📱 Mobile App Version
--☁️ Cloud Sync
--🗃 Task Categories
+- 📅 Calendar Integration  
+- 🔔 Notifications  
+- 🤖 AI Task Suggestions  
+- 📱 Mobile App Version  
+- ☁️ Cloud Sync  
+- 🗃 Task Categories  
 
 ---

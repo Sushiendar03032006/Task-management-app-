@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskify | Authentication</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .auth-transition { transition: all 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex justify-center items-center px-4 font-sans">
+
+    <div class="bg-white/95 backdrop-blur-sm p-6 sm:p-10 rounded-3xl w-full max-w-md shadow-2xl border border-white/20">
+
+        <div class="flex items-center justify-center gap-2 mb-6">
+            <span class="text-3xl">📋</span>
+            <h1 class="text-3xl font-extrabold tracking-tighter text-gray-900">
+                TASKIFY<span class="text-indigo-600">.</span>
+            </h1>
+        </div>
+
+        <h2 id="authTitle" class="text-xl font-bold text-center text-gray-800 mb-2">Welcome Back</h2>
+        <p id="authSubtitle" class="text-center text-gray-500 mb-8 font-medium">Please enter your details to login.</p>
+
+        <div id="usernameWrapper" class="mb-4 hidden opacity-0 auth-transition">
+            <label class="text-xs font-black uppercase tracking-widest text-gray-400 ml-1">Username</label>
+            <input 
+                id="username"
+                type="text"
+                placeholder="Pick a cool name"
+                class="w-full border-2 border-gray-100 p-3 rounded-xl focus:border-indigo-500 outline-none transition-all"
+            >
+        </div>
+
+        <div class="mb-4">
+            <label class="text-xs font-black uppercase tracking-widest text-gray-400 ml-1">Email Address</label>
+            <input 
+                id="email"
+                type="email"
+                placeholder="name@example.com"
+                class="w-full border-2 border-gray-100 p-3 rounded-xl focus:border-indigo-500 outline-none transition-all"
+            >
+        </div>
+
+        <div class="mb-8">
+            <div class="flex justify-between items-end mb-1">
+                <label class="text-xs font-black uppercase tracking-widest text-gray-400 ml-1">Password</label>
+                <span id="strengthText" class="text-[10px] text-gray-300 font-bold uppercase transition-colors">Min. 8 characters</span>
+            </div>
+            <input 
+                id="password"
+                type="password"
+                placeholder="••••••••"
+                class="w-full border-2 border-gray-100 p-3 rounded-xl focus:border-indigo-500 outline-none transition-all mb-2"
+            >
+            
+            <div id="meterContainer" class="hidden h-1.5 w-full bg-gray-100 rounded-full overflow-hidden transition-all">
+                <div id="strengthBar" class="h-full w-0 transition-all duration-500 bg-red-400"></div>
+            </div>
+        </div>
+
+        <div class="space-y-4">
+            <button 
+                id="submitBtn"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white w-full p-4 rounded-2xl font-black transition transform active:scale-95 shadow-lg shadow-indigo-200"
+            >
+                LOG IN
+            </button>
+
+            <p class="text-center text-sm font-bold text-gray-500">
+                <span id="toggleText">Need an account?</span>
+                <button id="toggleModeBtn" class="text-indigo-600 hover:underline ml-1">Create Account</button>
+            </p>
+        </div>
+
+        <div id="resetArea" class="mt-8 text-center border-t pt-4">
+            <button id="resetBtn" class="text-sm font-bold text-gray-400 hover:text-indigo-600 transition">
+                Forgot password?
+            </button>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="auth.js"></script>
+
+</body>
+</html>

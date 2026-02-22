@@ -27,6 +27,7 @@ It helps users organize, track, and analyze their daily tasks with secure authen
 - ⚡ Real-time Updates
 - 🗑 Clear Completed Tasks
 - 📈 Live Progress Bar
+- 🗃 Task Categories based on priority (Low,Medium,High)
 
 ---
 
@@ -75,7 +76,7 @@ It helps users organize, track, and analyze their daily tasks with secure authen
 ### 1️⃣ Clone the Repository:
 
 ```bash
-git clone https://github.com/your-username/taskify.git
+git clone https://github.com/Sushiendar03032006/Task-management-app-
 ```
 
 #### 2️⃣ Open Project Folder:
@@ -141,6 +142,4 @@ Open:  index.html
 - 🤖 AI Task Suggestions  
 - 📱 Mobile App Version  
 - ☁️ Cloud Sync  
-- 🗃 Task Categories  
-
 ---

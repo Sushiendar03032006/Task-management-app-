@@ -36,60 +36,58 @@ It helps users organize, track, and analyze their daily tasks with secure authen
 ---
 
 ## 📂 Project Structure
-task-manager/
-│
-├── index.html # Login & Signup Page
-├── dashboard.html # Main Dashboard
-├── auth.js # Authentication Logic
-├── task.js # Task Management Logic
-├── firebase-config.js # Firebase Configuration
-└── README.md # Project Documentation
-
+<img width="377" height="322" alt="image" src="https://github.com/user-attachments/assets/50d69f3b-0b35-4214-931a-51771dba8833" />
 
 ---
 
 ## 📸 Project Screenshots
 
-> Add your output images here
-
 ### 🔹 Login Page
-![Login Page](assets/login.png)
+![Login Page](<img width="1915" height="872" alt="image" src="https://github.com/user-attachments/assets/928f25d6-64b0-4488-93a6-94d452e7ec63" />
+)
 
 ### 🔹 Dashboard
-![Dashboard](assets/dashboard.png)
+<img width="1918" height="855" alt="image" src="https://github.com/user-attachments/assets/94628b00-0836-4162-acff-b3d172295fa7" />
+
+<img width="1882" height="498" alt="image" src="https://github.com/user-attachments/assets/7ae1f508-0697-46ee-81b3-4ecdbd8c47ff" />
+
+
 
 ### 🔹 Task Chart
-![Task Chart](assets/chart.png)
+<img width="1891" height="850" alt="image" src="https://github.com/user-attachments/assets/9fa89684-fac2-4851-b6c4-f4b5795c7af4" />
 
+<img width="1896" height="785" alt="image" src="https://github.com/user-attachments/assets/01fd7336-1d1f-4386-8356-db3d176badd8" />
+
+<img width="1897" height="876" alt="image" src="https://github.com/user-attachments/assets/e7c8c9cc-b6b4-4543-86a5-f71bc8564d48" />
 
 ---
 
 ## ⚙️ Installation & Setup
 
-### 1️⃣ Clone the Repository
+### 1️⃣ Clone the Repository:
 
 ```bash
 git clone https://github.com/your-username/taskify.git
 ```
 
-2️⃣ Open Project Folder
-cd task-manager
-3️⃣ Create Firebase Project
+#### 2️⃣ Open Project Folder:
+```
+cd task-manager-app
+```
 
+### 3️⃣ Create Firebase Project:
+
+```
 Go to: https://firebase.google.com/
-
 Create a new project
+Enable: Authentication (Email/Password) and Firestore Database
+```
 
-Enable:
-
-Authentication (Email/Password)
-
-Firestore Database
-
-4️⃣ Configure Firebase
+### 4️⃣ Configure Firebase:
 
 Create firebase-config.js file and add:
 
+```
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "YOUR_DOMAIN",
@@ -100,46 +98,42 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-5️⃣ Run the Project
+```
+### 5️⃣ Run the Project:
 
-Open:
-
-index.html
-
-in your browser.
-
+```
+Open:  index.html
 ✔ No server required.
+```
 
-📊 Dashboard Overview
+---
 
-Task Progress Graph
+## 📊 Dashboard Overview:
+ 
+-Task Progress Graph
+-Completion Percentage
+-Pending Task Counter
+-Real-time Updates
 
-Completion Percentage
+---
 
-Pending Task Counter
+## 🔒 Security:
 
-Real-time Updates
 
-🔒 Security
+-Secure Firebase Authentication
+-User-specific Firestore data
+-Protected routes
+-Session management
 
-Secure Firebase Authentication
+---
 
-User-specific Firestore data
+## 🌟 Future Enhancements:
 
-Protected routes
+-📅 Calendar Integration
+-🔔 Notifications
+-🤖 AI Task Suggestions
+-📱 Mobile App Version
+-☁️ Cloud Sync
+-🗃 Task Categories
 
-Session management
-
-🌟 Future Enhancements
-
-📅 Calendar Integration
-
-🔔 Notifications
-
-🤖 AI Task Suggestions
-
-📱 Mobile App Version
-
-☁️ Cloud Sync
-
-🗃 Task Categories
+---

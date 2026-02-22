@@ -5,6 +5,15 @@ It helps users organize, track, and analyze their daily tasks with secure authen
 
 ---
 
+---
+
+## 🌐 Live Demo
+
+👉 **Click here to try Taskify:**  
+🔗 https://taskify-pro-2026.vercel.app/
+
+---
+
 ## 🚀 Features
 
 - 🔐 User Authentication (Login / Signup / Reset Password)
@@ -43,8 +52,7 @@ It helps users organize, track, and analyze their daily tasks with secure authen
 ## 📸 Project Screenshots
 
 ### 🔹 Login Page
-![Login Page](<img width="1915" height="872" alt="image" src="https://github.com/user-attachments/assets/928f25d6-64b0-4488-93a6-94d452e7ec63" />
-)
+<img width="1915" height="872" alt="image" src="https://github.com/user-attachments/assets/928f25d6-64b0-4488-93a6-94d452e7ec63" />
 
 ### 🔹 Dashboard
 <img width="1918" height="855" alt="image" src="https://github.com/user-attachments/assets/94628b00-0836-4162-acff-b3d172295fa7" />

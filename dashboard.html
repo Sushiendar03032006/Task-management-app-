@@ -7,22 +7,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        @media (max-width: 640px) {
-
-  #taskList li {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  #taskList button {
-    width: 100%;
-  }
-
-}
         .active-link { color: #4f46e5; border-bottom: 2px solid #4f46e5; }
         /* Scrollable Chart Wrapper */
-        .chart-container { width: 100%; overflow-x: auto; scroll-behavior: smooth; border-radius: 1rem;  -webkit-overflow-scrolling: touch;}
+        .chart-container { width: 100%; overflow-x: hidden; scroll-behavior: smooth; border-radius: 1rem; }
         .chart-area { min-width: 1000px; height: 320px; }
         .nav-btn { background: white; border: 1px solid #e5e7eb; padding: 0.5rem; border-radius: 9999px; transition: all 0.2s; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
         .nav-btn:hover { background: #f9fafb; color: #4f46e5; }
@@ -32,47 +19,20 @@
 <body class="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 transition-colors duration-500 font-sans">
 
     <nav class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
-  <div class="max-w-5xl mx-auto px-4 h-16 flex justify-between items-center">
-
-    <!-- Logo -->
-    <div class="flex items-center gap-2">
-      <span class="text-2xl">📋</span>
-      <h1 class="text-xl font-extrabold">TASKIFY<span class="text-indigo-600">.</span></h1>
-    </div>
-
-    <!-- Desktop Menu -->
-    <div class="hidden md:flex items-center gap-6" id="desktopMenu">
-      <button onclick="showPage('tasksPage', this)" class="nav-link active-link font-bold text-sm uppercase">Tasks</button>
-      <button onclick="showPage('statsPage', this)" class="nav-link text-gray-500 font-bold text-sm uppercase">Insights</button>
-      <button id="themeToggle" class="text-xl">🌙</button>
-      <button id="logoutBtn"
-        class="bg-red-50 text-red-600 px-4 py-1.5 rounded-lg text-xs font-black uppercase">
-        Logout
-      </button>
-    </div>
-
-    <!-- Mobile Button -->
-    <button id="menuBtn" class="md:hidden text-2xl">☰</button>
-  </div>
-
-  <!-- Mobile Menu -->
-  <div id="mobileMenu"
-    class="hidden md:hidden bg-white border-t px-4 py-4 space-y-3">
-
-    <button onclick="mobileNav('tasksPage',this)"
-      class="block w-full text-left font-bold">Tasks</button>
-
-    <button onclick="mobileNav('statsPage',this)"
-      class="block w-full text-left font-bold">Insights</button>
-
-    <button id="themeToggleMobile" class="block w-full text-left">🌙 Theme</button>
-
-    <button id="logoutBtnMobile"
-      class="block w-full text-left text-red-600 font-bold">
-      Logout
-    </button>
-  </div>
-</nav>
+        <div class="max-w-5xl mx-auto px-4 h-16 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl animate-pulse">📋</span>
+                <h1 class="text-xl font-extrabold tracking-tighter text-gray-900 leading-none">TASKIFY<span class="text-indigo-600">.</span></h1>
+            </div>
+            
+            <div class="flex items-center gap-4 sm:gap-8">
+                <button onclick="showPage('tasksPage', this)" class="nav-link active-link font-bold text-sm uppercase">Tasks</button>
+                <button onclick="showPage('statsPage', this)" class="nav-link text-gray-500 font-bold text-sm uppercase transition">Insights</button>
+                <button id="themeToggle" class="p-2 nav-btn border-none shadow-none text-xl">🌙</button>
+                <button id="logoutBtn" class="bg-red-50 text-red-600 px-4 py-1.5 rounded-lg text-xs font-black uppercase hover:bg-red-100 transition">Logout</button>
+            </div>
+        </div>
+    </nav>
 
     <main class="max-w-5xl mx-auto p-4 sm:p-8">
         
@@ -84,136 +44,43 @@
         </div>
 
         <section id="tasksPage">
-  <div
-    class="bg-white/90 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-10 border border-white/20">
+            <div class="bg-white/90 backdrop-blur-lg rounded-3xl shadow-2xl p-6 sm:p-10 border border-white/20">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-2xl font-black text-gray-800">My Workspace</h2>
+                    <div class="text-right">
+                        <span id="taskCount" class="block text-sm font-bold text-indigo-600">0 Tasks</span>
+                        <button id="clearCompleted" class="text-xs text-gray-400 underline hover:text-red-500 transition">Clear Done</button>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-3 mb-8">
+                    <input id="taskInput" type="text" placeholder="Capture a new task..." 
+                        class="flex-1 bg-gray-50 border-2 border-transparent focus:border-indigo-500 focus:bg-white p-4 rounded-2xl outline-none transition-all shadow-inner text-lg">
+                    <button id="addBtn" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-black shadow-lg hover:bg-indigo-700 transition transform active:scale-95">ADD</button>
+                </div>
 
-    <!-- Header -->
-    <div class="flex justify-between items-center mb-8">
-      <h2 class="text-2xl font-black text-gray-800">My Workspace</h2>
+                <div class="space-y-4 mb-8">
+                    <input id="searchInput" type="text" placeholder="Search your list..." class="w-full p-3 rounded-xl border bg-white/50 focus:bg-white transition">
+                    
+                    <div class="flex flex-col gap-2">
+                        <div class="flex justify-between items-end">
+                            <div class="flex gap-2">
+                                <button class="tabBtn px-4 py-1.5 rounded-full bg-indigo-600 text-white text-xs font-bold" data-filter="all">All</button>
+                                <button class="tabBtn px-4 py-1.5 rounded-full bg-gray-100 text-gray-500 text-xs font-bold" data-filter="active">Active</button>
+                                <button class="tabBtn px-4 py-1.5 rounded-full bg-gray-100 text-gray-500 text-xs font-bold" data-filter="completed">Done</button>
+                            </div>
+                            <span id="progressPercent" class="text-lg font-black text-indigo-600">0%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden shadow-inner">
+                            <div id="progressBar" class="bg-gradient-to-r from-green-400 to-emerald-500 h-full transition-all duration-1000" style="width:0%"></div>
+                        </div>
+                    </div>
+                </div>
 
-      <div class="text-right">
-        <span id="taskCount"
-          class="block text-sm font-bold text-indigo-600">0 Tasks</span>
-
-        <button id="clearCompleted"
-          class="text-xs text-gray-400 underline hover:text-red-500 transition">
-          Clear Done
-        </button>
-      </div>
-    </div>
-
-
-    <!-- Add Task -->
-    <div
-      class="flex flex-col sm:flex-row gap-3 mb-6 w-full">
-
-      <input
-        id="taskInput"
-        type="text"
-        placeholder="Capture a new task..."
-        class="w-full flex-1 bg-gray-50 border-2 border-transparent
-        focus:border-indigo-500 focus:bg-white
-        p-3 sm:p-4 rounded-2xl text-base sm:text-lg outline-none">
-
-      <button
-        id="addBtn"
-        class="w-full sm:w-auto bg-indigo-600 text-white
-        px-6 sm:px-8 py-3 sm:py-4
-        rounded-2xl font-black shadow-lg
-        hover:bg-indigo-700 transition active:scale-95">
-        ADD
-      </button>
-
-    </div>
-
-
-    <!-- Search + Filters -->
-    <div class="space-y-4 mb-8">
-
-      <!-- Search -->
-      <input
-        id="searchInput"
-        type="text"
-        placeholder="Search your list..."
-        class="w-full p-3 rounded-xl border bg-white/50
-        focus:bg-white focus:border-indigo-400 outline-none transition">
-
-
-      <!-- Filters + Progress -->
-      <div class="flex flex-col gap-3">
-
-        <div
-          class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
-
-          <!-- Tabs -->
-          <div class="flex gap-2 flex-wrap">
-
-            <button
-              class="tabBtn px-4 py-1.5 rounded-full
-              bg-indigo-600 text-white text-xs font-bold"
-              data-filter="all">
-              All
-            </button>
-
-            <button
-              class="tabBtn px-4 py-1.5 rounded-full
-              bg-gray-100 text-gray-500 text-xs font-bold"
-              data-filter="active">
-              Active
-            </button>
-
-            <button
-              class="tabBtn px-4 py-1.5 rounded-full
-              bg-gray-100 text-gray-500 text-xs font-bold"
-              data-filter="completed">
-              Done
-            </button>
-
-          </div>
-
-
-          <!-- Percent -->
-          <span
-            id="progressPercent"
-            class="text-lg font-black text-indigo-600">
-            0%
-          </span>
-
-        </div>
-
-
-        <!-- Progress Bar -->
-        <div
-          class="w-full bg-gray-200 rounded-full h-3 overflow-hidden shadow-inner">
-
-          <div
-            id="progressBar"
-            class="bg-gradient-to-r from-green-400 to-emerald-500
-            h-full transition-all duration-1000"
-            style="width:0%">
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- Task List -->
-    <ul id="taskList" class="space-y-4"></ul>
-
-    <!-- Empty State -->
-    <div
-      id="emptyState"
-      class="hidden text-center py-12 text-gray-400 font-medium">
-
-      No tasks found! 🚀
-
-    </div>
-
-  </div>
-</section>
+                <ul id="taskList" class="space-y-4"></ul>
+                <div id="emptyState" class="hidden text-center py-12 text-gray-400 font-medium">No tasks found! 🚀</div>
+            </div>
+        </section>
 
         <section id="statsPage" class="hidden animate-in slide-in-from-bottom-5 duration-500">
             <div class="flex justify-between items-center mb-8">
@@ -223,7 +90,7 @@
                 </button>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="md:col-span-2 bg-white/90 rounded-3xl p-8 shadow-xl">
                     <div class="flex justify-between items-center mb-6">
                         <h3 class="font-black text-gray-800 text-xl">📈 Productivity Trend</h3>
@@ -326,86 +193,6 @@
             pieChart.data.datasets[0].data = [done, pending];
             pieChart.update();
         };
-        const menuBtn = document.getElementById("menuBtn");
-  const mobileMenu = document.getElementById("mobileMenu");
-
-  menuBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-  });
-
-  function mobileNav(page, btn) {
-    showPage(page, btn);
-    mobileMenu.classList.add("hidden");
-  }
-
-  // Sync logout buttons
-  document.getElementById("logoutBtnMobile")
-    ?.addEventListener("click", () => {
-      document.getElementById("logoutBtn").click();
-    });
-
-     const themeBtn = document.getElementById("themeToggle");
-  const themeBtnMobile = document.getElementById("themeToggleMobile");
-  const body = document.body;
-
-  // Load saved theme
-  if (localStorage.getItem("theme") === "dark") {
-    enableDark();
-  }
-
-  function enableDark() {
-    body.classList.remove(
-      "from-indigo-500",
-      "via-purple-500",
-      "to-pink-500"
-    );
-
-    body.classList.add("bg-gray-900", "text-white");
-
-    document.querySelectorAll(".bg-white, .bg-white\\/90, .bg-white\\/95")
-      .forEach(el => {
-        el.classList.add("bg-gray-800");
-        el.classList.remove("bg-white", "bg-white/90", "bg-white/95");
-      });
-
-    localStorage.setItem("theme", "dark");
-
-    if (themeBtn) themeBtn.textContent = "☀️";
-    if (themeBtnMobile) themeBtnMobile.textContent = "☀️ Light";
-  }
-
-  function disableDark() {
-    body.classList.remove("bg-gray-900", "text-white");
-
-    body.classList.add(
-      "bg-gradient-to-br",
-      "from-indigo-500",
-      "via-purple-500",
-      "to-pink-500"
-    );
-
-    document.querySelectorAll(".bg-gray-800")
-      .forEach(el => {
-        el.classList.add("bg-white");
-        el.classList.remove("bg-gray-800");
-      });
-
-    localStorage.setItem("theme", "light");
-
-    if (themeBtn) themeBtn.textContent = "🌙";
-    if (themeBtnMobile) themeBtnMobile.textContent = "🌙 Theme";
-  }
-
-  function toggleTheme() {
-    if (localStorage.getItem("theme") === "dark") {
-      disableDark();
-    } else {
-      enableDark();
-    }
-  }
-
-  themeBtn?.addEventListener("click", toggleTheme);
-  themeBtnMobile?.addEventListener("click", toggleTheme);
     </script>
 
     <footer class="bg-white/80 backdrop-blur-md border-t border-gray-200 py-6 mt-12">
